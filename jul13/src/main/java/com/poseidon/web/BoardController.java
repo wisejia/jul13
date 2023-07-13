@@ -7,6 +7,7 @@ import java.util.Map;
 
 // Ctrl + shift + o --> 임포트 정리해줘요.
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -48,5 +49,31 @@ public class BoardController {
 
 		return mv;
 	}
+	
+	@GetMapping("/board2")
+	public String board2(Model model) {
+		model.addAttribute("name", "홍길동");
+		
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
+		for (int i = 1; i < 11; i++) {
+			BoardDTO dto = new BoardDTO(i, "제목입니다", "홍길동", "2023-07-13", i);
+			list.add(dto);
+		}
+		
+		model.addAttribute("list", list);
+		
+		return "board2";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
